@@ -1,0 +1,10 @@
+# Only public/ is reachable over HTTP. Source, config, vendor, storage and tests are not.
+Options -Indexes -MultiViews
+
+RewriteEngine On
+RewriteRule ^public/ - [L]
+RewriteRule ^(.*)$ public/$1 [L]
+
+<FilesMatch "^(composer\.(json|lock)|phpunit\.xml|README\.md|\.env.*)$">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,23 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+
+RewriteEngine On
+# Real static files (assets) are served directly; everything else goes to the front controller.
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+RewriteRule ^ index.php [L,QSA]
+
+# Security headers for PHP responses are sent by the app itself; these cover the static assets.
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|svg|woff2)$">
+        Header set X-Content-Type-Options "nosniff"
+        Header set Cross-Origin-Resource-Policy "same-origin"
+        Header set Cache-Control "public, max-age=604800"
+        Header set Content-Security-Policy "default-src 'none'; style-src 'self'; img-src 'self'"
+    </FilesMatch>
+</IfModule>
+
+# Only these file types may be served from public/.
+<FilesMatch "\.(?!(css|js|svg|woff2|php)$)[^.]+$">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,8 @@
+/vendor/
+/config/config.php
+/storage/tmp/*
+/storage/logs/*
+!/storage/**/.htaccess
+/tests/fixtures/access-work/
+.phpunit.cache/
+.phpunit.result.cache

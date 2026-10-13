@@ -1,0 +1,31 @@
+{
+    "name": "transformer-x/web",
+    "description": "Transformer X: converts product upload spreadsheets into WooCommerce import files.",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.2",
+        "ext-pdo": "*",
+        "ext-zip": "*",
+        "ext-mbstring": "*",
+        "ext-fileinfo": "*",
+        "openspout/openspout": "^4.28"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TransformerX\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TransformerX\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
